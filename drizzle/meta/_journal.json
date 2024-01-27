@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1706303360683,
+      "tag": "0000_yummy_tony_stark",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1706311798747,
+      "tag": "0001_lucky_fat_cobra",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1706311949329,
+      "tag": "0002_busy_magus",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1706323585370,
+      "tag": "0003_thin_multiple_man",
+      "breakpoints": true
+    }
+  ]
+}

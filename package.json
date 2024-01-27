@@ -13,7 +13,9 @@
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@types/pg": "^8.11.0",
 		"autoprefixer": "^10.4.17",
+		"drizzle-kit": "^0.20.13",
 		"postcss": "^8.4.33",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
@@ -24,8 +26,15 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@lucia-auth/adapter-postgresql": "^2.0.2",
 		"@trpc/client": "^10.45.0",
 		"@trpc/server": "^10.45.0",
-		"trpc-sveltekit": "^3.5.22"
+		"daisyui": "^4.6.0",
+		"dotenv": "^16.4.1",
+		"drizzle-orm": "^0.29.3",
+		"lucia": "^2.7.6",
+		"pg": "^8.11.3",
+		"trpc-sveltekit": "^3.5.22",
+		"zod": "^3.22.4"
 	}
 }
