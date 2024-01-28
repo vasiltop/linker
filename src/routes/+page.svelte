@@ -4,13 +4,13 @@
 
 <div class="w-full h-full grid place-items-center">
 	<div class="max-w-7xl w-full h-full">
-		<div class=" grid lg:grid-cols-12 m-8 gap-4 grid-cols-1">
-			<div class="lg:col-span-5 content col-span-1">
+		<div class=" grid lg:grid-cols-12 md:grid-cols-12 m-8 gap-4 grid-cols-1">
+			<div class="lg:col-span-5 content md:col-span-5 col-span-1">
 				<h2 class="font-bold text-xl text-primary-content">Search:</h2>
 				<div class="grid place-items-center h-4/5">
-					<div class="flex justify-center gap-4 flex-wrap">
+					<div class="flex justify-center gap-4 flex-wrap my-2">
 						<div
-							class="flex items-center gap-2 join border-[1px] !border-neutral rounded-xl"
+							class="flex items-center join border-[1px] !border-neutral rounded-xl max-w-sm"
 						>
 							<svg fill="currentColor" class="w-6 h-6 join-item m-2"
 								><path
@@ -21,7 +21,7 @@
 							<input
 								type="text"
 								placeholder="eg. Rust"
-								class="input bg-primary !outline-none !border-none join-item"
+								class="input bg-primary !outline-none !border-none join-item w-full"
 							/>
 						</div>
 						<a href="/" class="btn-link">
@@ -40,12 +40,14 @@
 				</div>
 			</div>
 
-			<div class="lg:col-span-7 content col-span-1">
+			<div class="lg:col-span-7 content md:col-span-7 col-span-1">
 				<h2 class="font-bold text-xl text-primary-content">
 					Trending Languages:
 				</h2>
 
-				<div class="grid lg:grid-cols-3 py-4 grid-cols-1">
+				<div
+					class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 py-4"
+				>
 					<Language
 						name="Rust"
 						description="Rust is blazingly fast and memory-efficient: with no runtime or garbage collector"
@@ -53,8 +55,8 @@
 				</div>
 			</div>
 
-			<div class="lg:col-span-12 content col-span-1">
-				<div class="flex">
+			<div class="lg:col-span-12 md:col-span-12 content col-span-1">
+				<div class="flex flex-wrap">
 					<h2 class="font-bold text-xl text-primary-content">
 						Search Results:
 					</h2>
@@ -71,7 +73,9 @@
 					</div>
 				</div>
 
-				<div class="grid lg:grid-cols-4 grid-cols-1 gap-4 p-4">
+				<div
+					class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4"
+				>
 					{#each { length: 50 } as _, i}
 						<Language
 							name="Rust"
