@@ -11,11 +11,11 @@ export default {
 			{
 				dark: {
 					...themes.dark,
-					primary: '#191c1f',
+					primary: '#141517',
 					secondary: '#405263',
 					accent: '#3e4c59',
-					neutral: '#bdc4a7',
-					'base-100': '#1f2429',
+					neutral: '#838776',
+					'base-100': '#1a1d1f',
 					'neutral-content': '#ffffff',
 				},
 			},

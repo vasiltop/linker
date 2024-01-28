@@ -11,4 +11,12 @@ body {
 	.input {
 		@apply autofill:!bg-none autofill:!bg-base-100;
 	}
+
+	.btn-link {
+		@apply btn bg-primary border-none hover:bg-accent;
+	}
+
+	.content {
+		@apply bg-primary border-neutral border-[1px] rounded-lg p-4
+	}
 }

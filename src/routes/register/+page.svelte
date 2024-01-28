@@ -5,11 +5,15 @@
 </script>
 
 <div class="grid place-items-center w-full h-full">
-	<form method="post" class=" flex flex-col gap-2 bg-primary p-8 rounded-xl">
-		{#if form?.message}
-			<div>{form.message}</div>
-		{/if}
+	<form
+		method="post"
+		class=" flex flex-col gap-2 bg-primary p-8 rounded-xl border-neutral border-[1px]"
+	>
 		<h2 class=" text-3xl font-bold text-center">Register</h2>
+
+		{#if form?.message}
+			<div class=" text-red-400">{form.message}</div>
+		{/if}
 		<div
 			class="flex flex-col gap-2 border-b-2 border-gray-600 py-2 border-opacity-50"
 		>

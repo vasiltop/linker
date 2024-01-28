@@ -2,11 +2,13 @@
 	//import { page } from '$app/stores';
 </script>
 
-<header class=" p-4 order-b-[1px] grid place-items-center bg-primary">
+<header
+	class=" p-4 order-b-[1px] grid place-items-center bg-primary border-b-neutral border-b-[1px]"
+>
 	<div class=" max-w-5xl w-full">
 		<div class="flex w-full items-center gap-2">
 			<div class="text-3xl flex items-center gap-2 w-full">
-				<h1 class=" font-bold text-base-content">Linker</h1>
+				<h1 class=" font-bold text-primary-content">Linker</h1>
 
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -19,34 +21,8 @@
 				>
 			</div>
 
-			<!--
-			{#if $page.url.pathname === '/'}
-				<div
-					class="flex items-center gap-2 join bg-base-200 border-[1px] !border-neutral rounded-xl"
-				>
-					<svg
-						fill-rule="evenodd"
-						clip-rule="evenodd"
-						class="w-6 h-6 join-item m-2"
-						stroke-linejoin="round"
-						stroke-miterlimit="2"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-						><path
-							d="m15.97 17.031c-1.479 1.238-3.384 1.985-5.461 1.985-4.697 0-8.509-3.812-8.509-8.508s3.812-8.508 8.509-8.508c4.695 0 8.508 3.812 8.508 8.508 0 2.078-.747 3.984-1.985 5.461l4.749 4.75c.146.146.219.338.219.531 0 .587-.537.75-.75.75-.192 0-.384-.073-.531-.22zm-5.461-13.53c-3.868 0-7.007 3.14-7.007 7.007s3.139 7.007 7.007 7.007c3.866 0 7.007-3.14 7.007-7.007s-3.141-7.007-7.007-7.007z"
-							fill-rule="nonzero"
-						/></svg
-					>
-					<input
-						type="text"
-						placeholder="eg. Rust"
-						class="input bg-base-200 !outline-none !border-none join-item p-0"
-					/>
-				</div>
-			{/if}
-			-->
 			<div class="flex-1 flex gap-1">
-				<a href="/" class="btn bg-primary border-none hover:bg-accent">
+				<a href="/" class="btn-link">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
@@ -58,7 +34,7 @@
 						/></svg
 					>
 				</a>
-				<a href="/logout" class="btn bg-primary border-none hover:bg-accent">
+				<a href="/logout" class="btn-link">
 					<svg
 						width="24"
 						height="24"
