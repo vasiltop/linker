@@ -5,6 +5,6 @@
 
 	onMount(async () => {
 		await invalidateAll();
-		goto('/');
+		goto('/login');
 	});
 </script>

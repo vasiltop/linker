@@ -6,3 +6,9 @@ html,
 body {
 	height: 100vh;
 }
+
+@layer components {
+	.input {
+		@apply autofill:!bg-none autofill:!bg-base-100;
+	}
+}
