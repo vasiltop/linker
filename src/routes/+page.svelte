@@ -7,7 +7,7 @@
 	let languages: Language[] = [];
 
 	onMount(async () => {
-		languages = await trpc.language.get.query();
+		languages = await trpc.language.getAll.query();
 	});
 </script>
 
@@ -58,6 +58,7 @@
 					class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 py-4"
 				>
 					<LanguageCard
+						id=""
 						name="Rust"
 						description="Rust is blazingly fast and memory-efficient: with no runtime or garbage collector"
 					/>
@@ -87,6 +88,7 @@
 				>
 					{#each languages as language}
 						<LanguageCard
+							id={language.id}
 							name={language.name}
 							description={language.description}
 						/>

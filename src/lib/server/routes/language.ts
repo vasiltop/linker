@@ -3,16 +3,36 @@ import { z } from 'zod';
 import { db } from '../db';
 import { language } from '../db/schema';
 import { Language } from '../schema';
+import { eq } from 'drizzle-orm';
+import { TRPCError } from '@trpc/server';
+import { authorizedProcedure } from '$lib/trpc';
 
 export const app = router({
-	get: procedure
+	getAll: procedure
 		.input(z.void())
 		.output(Language.array())
 		.query(() => {
 			return db.select().from(language);
 		}),
 
-	create: procedure
+	getOne: procedure
+		.input(z.string())
+		.output(Language)
+		.query(async ({ input }) => {
+			const data = await db.query.language.findFirst({
+				where: eq(language.id, input),
+			});
+
+			if (!data) {
+				throw new TRPCError({
+					message: 'Could not find this id.',
+					code: 'NOT_FOUND',
+				});
+			}
+
+			return data;
+		}),
+	create: authorizedProcedure
 		.input(
 			z.object({
 				/*
@@ -31,8 +51,10 @@ export const app = router({
 			})
 		)
 		.output(z.void())
-		.mutation(async ({ input }) => {
-			await db.insert(language).values(input);
+		.mutation(async ({ input, ctx }) => {
+			await db
+				.insert(language)
+				.values({ ...input, userId: ctx.session.user.userId });
 		}),
 });
 

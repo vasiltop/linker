@@ -53,4 +53,9 @@ export const language = pgTable('language', {
 	id: uuid('id').primaryKey().defaultRandom(),
 	name: text('name').notNull(),
 	description: text('description').notNull(),
+	userId: varchar('user_id', {
+		length: 15,
+	})
+		.notNull()
+		.references(() => user.id),
 });

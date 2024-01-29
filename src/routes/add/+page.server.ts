@@ -15,26 +15,3 @@ export const load = (async ({ locals }) => {
 
 	return {};
 }) satisfies PageServerLoad;
-
-export const actions: Actions = {
-	default: async ({ request, locals }) => {
-		const data = await request.formData();
-		const name = data.get('name')!.toString();
-		const description = data.get('description')!.toString();
-
-		try {
-			await trpc.language.create.mutate({
-				name,
-				description,
-			});
-		} catch (e) {
-			if (e instanceof TRPCClientError) {
-				const error = JSON.parse(e.message)[0].message;
-				return fail(403, { message: error });
-			}
-
-			return fail(500, { message: 'Unknown error occured.' });
-		}
-		return redirect(302, '/');
-	},
-};

@@ -43,6 +43,13 @@
       "when": 1706547218476,
       "tag": "0005_bored_catseye",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1706558978199,
+      "tag": "0006_sweet_abomination",
+      "breakpoints": true
     }
   ]
 }

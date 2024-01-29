@@ -1,9 +1,7 @@
 import { z } from 'zod';
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { language } from './db/schema';
 
-export const Language = z.object({
-	name: z.string(),
-	description: z.string(),
-	id: z.string(),
-});
+export const Language = createSelectSchema(language);
 
 export type Language = z.infer<typeof Language>;
