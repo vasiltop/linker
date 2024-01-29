@@ -5,10 +5,7 @@
 </script>
 
 <div class="grid place-items-center w-full h-full">
-	<form
-		method="post"
-		class=" flex flex-col gap-2 bg-primary p-8 rounded-xl border-neutral border-[1px]"
-	>
+	<form method="post" class=" flex flex-col gap-2 content p-16">
 		<h2 class=" text-3xl font-bold text-center">Register</h2>
 
 		{#if form?.message}
@@ -20,7 +17,7 @@
 			<p class="text-sm">Username</p>
 			<input
 				type="text"
-				class="input border-[1px] !border-gray-600 !outline-none text-secondary-content place-secondary"
+				class="input border-[1px] text-secondary-content place-secondary"
 				name="username"
 				placeholder="Username"
 			/>
@@ -29,13 +26,11 @@
 			<input
 				type="password"
 				name="password"
-				class="input border-[1px] !border-gray-600 !outline-none"
+				class="input border-[1px]"
 				placeholder="Password"
 			/>
 
-			<button type="submit" class="btn bg-secondary hover:bg-accent my-2">
-				Sign up
-			</button>
+			<button type="submit" class="btn"> Sign up </button>
 		</div>
 		<p class="text-xs">
 			Already have an account? <a href="/login" class="font-bold underline">

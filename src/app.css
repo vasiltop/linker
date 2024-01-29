@@ -9,7 +9,7 @@ body {
 
 @layer components {
 	.input {
-		@apply autofill:!bg-none autofill:!bg-base-100;
+		@apply autofill:!bg-none autofill:!bg-base-100 !border-gray-600 !outline-none;
 	}
 
 	.btn-link {
@@ -18,5 +18,8 @@ body {
 
 	.content {
 		@apply bg-primary border-neutral border-[1px] rounded-lg p-4
+	}
+	.btn {
+		@apply bg-secondary hover:bg-accent my-2
 	}
 }

@@ -1,5 +1,14 @@
-<script>
-	import Language from '$lib/components/Language.svelte';
+<script lang="ts">
+	import { trpc } from '$lib/client';
+	import LanguageCard from '$lib/components/LanguageCard.svelte';
+	import { onMount } from 'svelte';
+	import type { Language } from '$lib/server/schema';
+
+	let languages: Language[] = [];
+
+	onMount(async () => {
+		languages = await trpc.language.get.query();
+	});
 </script>
 
 <div class="w-full h-full grid place-items-center">
@@ -48,7 +57,7 @@
 				<div
 					class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 py-4"
 				>
-					<Language
+					<LanguageCard
 						name="Rust"
 						description="Rust is blazingly fast and memory-efficient: with no runtime or garbage collector"
 					/>
@@ -65,7 +74,7 @@
 						<h2 class="font-bold text-xl text-primary-content">
 							Not finding your language? <a
 								class="btn-link hover:no-underline bg-base-100"
-								href="/"
+								href="/add"
 							>
 								Add it!</a
 							>
@@ -76,10 +85,10 @@
 				<div
 					class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4"
 				>
-					{#each { length: 50 } as _, i}
-						<Language
-							name="Rust"
-							description="Rust is blazingly fast and memory-efficient: with no runtime or garbage collector"
+					{#each languages as language}
+						<LanguageCard
+							name={language.name}
+							description={language.description}
 						/>
 					{/each}
 				</div>

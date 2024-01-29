@@ -29,6 +29,20 @@
       "when": 1706323585370,
       "tag": "0003_thin_multiple_man",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1706544319358,
+      "tag": "0004_hot_ken_ellis",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1706547218476,
+      "tag": "0005_bored_catseye",
+      "breakpoints": true
     }
   ]
 }

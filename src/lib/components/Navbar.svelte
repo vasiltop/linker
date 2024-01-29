@@ -8,7 +8,9 @@
 	<div class=" max-w-5xl w-full">
 		<div class="flex w-full items-center gap-2">
 			<div class="text-3xl flex items-center gap-2 w-full">
-				<h1 class=" font-bold text-primary-content">Linker</h1>
+				<a href="/" class=" font-bold text-primary-content hover:text-accent"
+					>Linker</a
+				>
 
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

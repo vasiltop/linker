@@ -51,8 +51,6 @@ export const key = pgTable('user_key', {
 
 export const language = pgTable('language', {
 	id: uuid('id').primaryKey().defaultRandom(),
-	languageType: text('language_type'),
-	name: text('name'),
-	description: text('description'),
-	compiled: boolean('compiled'),
+	name: text('name').notNull(),
+	description: text('description').notNull(),
 });

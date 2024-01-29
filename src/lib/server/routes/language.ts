@@ -2,11 +2,20 @@ import { procedure, router } from '$lib/trpc';
 import { z } from 'zod';
 import { db } from '../db';
 import { language } from '../db/schema';
+import { Language } from '../schema';
 
 export const app = router({
+	get: procedure
+		.input(z.void())
+		.output(Language.array())
+		.query(() => {
+			return db.select().from(language);
+		}),
+
 	create: procedure
 		.input(
 			z.object({
+				/*
 				languageType: z.enum([
 					'functional',
 					'object-oriented',
@@ -15,9 +24,10 @@ export const app = router({
 					'procedural',
 					'event-driven',
 				]),
-				name: z.string().min(1).max(255),
-				description: z.string().min(8).max(2048),
 				compiled: z.boolean(),
+				*/
+				name: z.string().min(1).max(255),
+				description: z.string().min(4).max(2048),
 			})
 		)
 		.output(z.void())
