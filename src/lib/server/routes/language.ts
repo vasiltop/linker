@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { db } from '../db';
 import { language } from '../db/schema';
 import { Language } from '../schema';
-import { eq, sql } from 'drizzle-orm';
+import { eq, ilike, sql } from 'drizzle-orm';
 import { TRPCError } from '@trpc/server';
 import { authorizedProcedure } from '$lib/trpc';
 
@@ -66,7 +66,7 @@ export const app = router({
 			return db
 				.select()
 				.from(language)
-				.where(sql`${language.name} @@ to_tsquery(${"'" + input + "'"})`);
+				.where(ilike(language.name, `%${input}%`));
 		}),
 });
 

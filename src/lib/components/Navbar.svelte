@@ -24,6 +24,7 @@
 			</div>
 
 			<div class="flex-1 flex gap-1">
+				<!--
 				<a href="/" class="btn-link">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -36,6 +37,7 @@
 						/></svg
 					>
 				</a>
+				-->
 				<a href="/logout" class="btn-link">
 					<svg
 						width="24"

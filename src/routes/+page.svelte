@@ -12,9 +12,14 @@
 
 	let searchQuery = '';
 
+	$: {
+		searchQuery;
+
+		onSearchChange();
+	}
+	
 	async function onSearchChange() {
 		languages = await trpc.language.search.query(searchQuery);
-		console.log(languages);
 	}
 </script>
 
@@ -38,7 +43,6 @@
 								type="text"
 								placeholder="eg. Rust"
 								class="input bg-primary !outline-none !border-none join-item w-full"
-								on:change={onSearchChange}
 								bind:value={searchQuery}
 							/>
 						</div>
