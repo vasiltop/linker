@@ -1,38 +1,27 @@
-# create-svelte
+# Linker
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Linker is a web application where you can view information about programming languages. You can contribute to the site by posting about languages that you find interesting.
 
-## Creating a project
+### Installation
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Clone the repository
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone https://github.com/matteopolak/crave
 ```
 
-## Building
-
-To create a production version of your app:
+2. Install dependencies
 
 ```bash
-npm run build
+pnpm install
 ```
 
-You can preview the production build with `npm run preview`.
+2. Start the server
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```bash
+pnpm dev
+```
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
