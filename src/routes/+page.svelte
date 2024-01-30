@@ -5,19 +5,19 @@
 	import type { Language } from '$lib/server/schema';
 
 	let languages: Language[] = [];
+	let recommendedLanguages: Language[] = [];
 
 	onMount(async () => {
 		languages = await trpc.language.getAll.query();
+		recommendedLanguages = await trpc.language.getRecommended.query();
 	});
 
 	let searchQuery = '';
-
 	$: {
 		searchQuery;
 
 		onSearchChange();
 	}
-	
 	async function onSearchChange() {
 		languages = await trpc.language.search.query(searchQuery);
 	}
@@ -46,18 +46,6 @@
 								bind:value={searchQuery}
 							/>
 						</div>
-						<a href="/" class="btn-link">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								fill="currentColor"
-								height="24"
-								viewBox="0 0 24 24"
-								><path
-									d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"
-								/></svg
-							>
-						</a>
 					</div>
 				</div>
 			</div>
@@ -68,13 +56,15 @@
 				</h2>
 
 				<div
-					class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 py-4"
+					class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 py-4 gap-4"
 				>
-					<LanguageCard
-						id=""
-						name="Rust"
-						description="Rust is blazingly fast and memory-efficient: with no runtime or garbage collector"
-					/>
+					{#each recommendedLanguages as language}
+						<LanguageCard
+							id={language.id}
+							name={language.name}
+							description={language.description}
+						/>
+					{/each}
 				</div>
 			</div>
 

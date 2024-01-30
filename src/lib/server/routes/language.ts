@@ -6,6 +6,8 @@ import { Language } from '../schema';
 import { eq, ilike, sql } from 'drizzle-orm';
 import { TRPCError } from '@trpc/server';
 import { authorizedProcedure } from '$lib/trpc';
+import showdown from 'showdown';
+import sanitizeHtml from 'sanitize-html';
 
 export const app = router({
 	getAll: procedure
@@ -34,39 +36,41 @@ export const app = router({
 	create: authorizedProcedure
 		.input(
 			z.object({
-				/*
-				languageType: z.enum([
-					'functional',
-					'object-oriented',
-					'logical',
-					'imperative',
-					'procedural',
-					'event-driven',
-				]),
-				compiled: z.boolean(),
-				*/
 				name: z.string().min(1).max(255),
-				description: z.string().min(4).max(2048),
+				description: z.string().min(4).max(256),
+				markdown: z.string().min(4).max(4096),
 			})
 		)
 		.output(z.void())
 		.mutation(async ({ input, ctx }) => {
-			await db
-				.insert(language)
-				.values({ ...input, userId: ctx.session.user.userId });
+			const converter = new showdown.Converter();
+			const html = converter.makeHtml(input.markdown);
+			const cleanHtml = sanitizeHtml(html);
+
+			await db.insert(language).values({
+				...input,
+				userId: ctx.session.user.userId,
+				markdown: cleanHtml,
+			});
 		}),
 	search: procedure
 		.input(z.string())
 		.output(Language.array())
 		.query(({ input }) => {
-			if (!input) {
-				return db.select().from(language);
-			}
-
 			return db
 				.select()
 				.from(language)
 				.where(ilike(language.name, `%${input}%`));
+		}),
+	getRecommended: procedure
+		.input(z.void())
+		.output(Language.array())
+		.query(() => {
+			return db
+				.select()
+				.from(language)
+				.orderBy(sql`random()`)
+				.limit(6);
 		}),
 });
 

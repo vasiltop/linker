@@ -15,6 +15,8 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@tailwindcss/typography": "^0.5.10",
 		"@types/pg": "^8.11.0",
+		"@types/sanitize-html": "^2.9.5",
+		"@types/showdown": "^2.0.6",
 		"autoprefixer": "^10.4.17",
 		"drizzle-kit": "^0.20.13",
 		"postcss": "^8.4.33",
@@ -36,6 +38,8 @@
 		"drizzle-zod": "^0.5.1",
 		"lucia": "^2.7.6",
 		"pg": "^8.11.3",
+		"sanitize-html": "^2.11.0",
+		"showdown": "^2.1.0",
 		"trpc-sveltekit": "^3.5.22",
 		"zod": "^3.22.4"
 	}

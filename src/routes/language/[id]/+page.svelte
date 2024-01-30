@@ -21,6 +21,10 @@
 			</h1>
 
 			<p>{data.description}</p>
+			<div class="divider divider-neutral"></div>
+			<div class="prose max-w-full">
+				{@html data.markdown}
+			</div>
 		{/if}
 	</div>
 </div>
