@@ -9,6 +9,13 @@
 	onMount(async () => {
 		languages = await trpc.language.getAll.query();
 	});
+
+	let searchQuery = '';
+
+	async function onSearchChange() {
+		languages = await trpc.language.search.query(searchQuery);
+		console.log(languages);
+	}
 </script>
 
 <div class="w-full h-full grid place-items-center">
@@ -31,6 +38,8 @@
 								type="text"
 								placeholder="eg. Rust"
 								class="input bg-primary !outline-none !border-none join-item w-full"
+								on:change={onSearchChange}
+								bind:value={searchQuery}
 							/>
 						</div>
 						<a href="/" class="btn-link">
@@ -51,7 +60,7 @@
 
 			<div class="lg:col-span-7 content md:col-span-7 col-span-1">
 				<h2 class="font-bold text-xl text-primary-content">
-					Trending Languages:
+					Recommended Languages:
 				</h2>
 
 				<div

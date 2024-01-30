@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { db } from '../db';
 import { language } from '../db/schema';
 import { Language } from '../schema';
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { TRPCError } from '@trpc/server';
 import { authorizedProcedure } from '$lib/trpc';
 
@@ -14,7 +14,6 @@ export const app = router({
 		.query(() => {
 			return db.select().from(language);
 		}),
-
 	getOne: procedure
 		.input(z.string())
 		.output(Language)
@@ -55,6 +54,19 @@ export const app = router({
 			await db
 				.insert(language)
 				.values({ ...input, userId: ctx.session.user.userId });
+		}),
+	search: procedure
+		.input(z.string())
+		.output(Language.array())
+		.query(({ input }) => {
+			if (!input) {
+				return db.select().from(language);
+			}
+
+			return db
+				.select()
+				.from(language)
+				.where(sql`${language.name} @@ to_tsquery(${"'" + input + "'"})`);
 		}),
 });
 
